@@ -1,34 +1,16 @@
 import React from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Section, article, H } from "../components/ui"
 import SkillGraph from "../components/skill-graph"
 
-const Section = styled.section`
-  min-height: ${({ minHeight = "initial" }) => minHeight};
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${({ color = "none" }) => color};
-`
-
-const article = css`
-  width: 1000px;
-  max-width: 1000px;
-  padding: 80px 20px;
-`
-
-const SkillsContent = styled.article`
+const TechnicalSkills = styled.article`
   ${article};
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-
-const H = styled.h1`
-  font-size: 3rem;
 `
 
 const SkillsGrid = styled.div`
@@ -61,7 +43,7 @@ const Skills = () => (
   <Layout>
     <SEO title="Skills" />
     <Section>
-      <SkillsContent>
+      <TechnicalSkills>
         <H>Technical Skills</H>
         <SkillsGrid>
           <SkillText span={7}>
@@ -101,7 +83,7 @@ const Skills = () => (
           <SkillGraph skill="Photoshop" level={2} />
           <SkillGraph skill="Sketch" level={2} />
         </SkillsGrid>
-      </SkillsContent>
+      </TechnicalSkills>
     </Section>
   </Layout>
 )
