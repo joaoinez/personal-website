@@ -8,16 +8,15 @@ import SkillGraph from "../components/skill-graph"
 
 const TechnicalSkills = styled.article`
   ${article};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `
+
+const Strip = styled.div``
 
 const SkillsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
-  margin-top: 40px;
+  margin-top: 100px;
   width: 100%;
 `
 

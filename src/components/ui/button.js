@@ -5,8 +5,8 @@ const button = css`
   background-color: transparent;
   padding: 10px 40px;
   cursor: pointer;
+  white-space: nowrap;
   transition: all 0.15s ease-in-out;
-  margin: 0 10px;
 
   &:hover {
     background-color: #242424;

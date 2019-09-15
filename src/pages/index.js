@@ -6,7 +6,7 @@ import { ArrowRight } from "styled-icons/feather/ArrowRight"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Section, article, LinkButton } from "../components/ui"
+import { Section, article, LinkButton, H } from "../components/ui"
 
 const Skew = styled.div`
   position: absolute;
@@ -43,6 +43,60 @@ const MainButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex: 1;
+`
+
+const DualSection = styled(Section)`
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+`
+
+const About = styled.article`
+  ${article};
+  flex: 1;
+  color: white;
+  max-width: 500px;
+
+  p {
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+
+  ${LinkButton} {
+    border-color: white;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      color: #242424;
+    }
+  }
+`
+
+const Skills = styled.article`
+  ${article};
+  flex: 1;
+  color: white;
+  max-width: 500px;
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  ${LinkButton} {
+    border-color: white;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      color: #242424;
+    }
+  }
+`
+
+const Projects = styled.article`
+  ${article};
 `
 
 const IndexPage = () => {
@@ -85,6 +139,36 @@ const IndexPage = () => {
             </LinkButton>
           </MainButtonWrapper>
         </Main>
+      </Section>
+      <DualSection color="#242424">
+        <About>
+          <p>
+            Not a lot of things fascinate more than the world of software
+            development. Programming seems like a tool box with infinite
+            possiblities, where the only limiting factor is your imagination,
+            and maybe processing power.
+          </p>
+          <LinkButton to="/about">
+            More about me <ArrowRight size={20} />
+          </LinkButton>
+        </About>
+        <Skills>
+          <h4>Favourite technologies:</h4>
+          <ul>
+            <li>Javascript</li>
+            <li>React</li>
+            <li>GraphQL</li>
+            <li>Python</li>
+          </ul>
+          <LinkButton to="/skills">
+            See my skills <ArrowRight size={20} />
+          </LinkButton>
+        </Skills>
+      </DualSection>
+      <Section>
+        <Projects>
+          <H>Projects</H>
+        </Projects>
       </Section>
     </Layout>
   )

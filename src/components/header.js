@@ -29,6 +29,10 @@ const Ul = styled.ul`
 const Li = styled.li`
   list-style-type: none;
   margin-right: 50px;
+
+  a {
+    color: black; /* Might remove later */
+  }
 `
 
 const Header = () => {
