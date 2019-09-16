@@ -1,12 +1,16 @@
-import React from "react"
+import React, { useRef } from "react"
+import styled, { css } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled from "styled-components"
-import { ArrowRight } from "styled-icons/feather/ArrowRight"
+import { ArrowDown } from "styled-icons/feather/ArrowDown"
+import { Download } from "styled-icons/feather/Download"
+import { Linkedin } from "styled-icons/feather/Linkedin"
+import { Github } from "styled-icons/feather/Github"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Section, article, LinkButton, H } from "../components/ui"
+import { Section, article, ButtonA, H, IconA } from "../components/ui"
+import ProjectCard from "../components/project-card"
 
 const Skew = styled.div`
   position: absolute;
@@ -21,17 +25,26 @@ const Skew = styled.div`
 const Title = styled.h1`
   font-size: 5rem;
   max-width: 400px;
+  color: black;
 `
 
 const Main = styled.article`
   ${article};
-  padding: 80px 20px 20px 20px;
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 `
 
 const MainTextWrapper = styled.div`
   flex: 2;
+  min-width: 200px;
+
+  ${IconA} {
+    &:first-of-type {
+      margin-right: 20px;
+    }
+  }
 `
 
 const P = styled.p`
@@ -39,78 +52,100 @@ const P = styled.p`
 `
 
 const MainButtonWrapper = styled.div`
+  flex: 1;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
+
+  ${ButtonA} {
+    &:first-of-type {
+      margin-right: 20px;
+    }
+  }
 `
 
 const DualSection = styled(Section)`
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
+  padding: 60px 40px;
+`
+
+const darkArticle = css`
+  ${article};
+  flex: 1;
+  color: #eeeeee;
+  max-width: 500px;
+  padding: 20px 0;
+  min-width: 250px;
+
+  h4 {
+    color: white;
+  }
 `
 
 const About = styled.article`
-  ${article};
-  flex: 1;
-  color: white;
-  max-width: 500px;
+  ${darkArticle};
 
   p {
     max-width: 600px;
-    margin-bottom: 40px;
-  }
-
-  ${LinkButton} {
-    border-color: white;
-    color: white;
-
-    &:hover {
-      background-color: white;
-      color: #242424;
-    }
   }
 `
 
 const Skills = styled.article`
-  ${article};
-  flex: 1;
-  color: white;
-  max-width: 500px;
-
-  ul {
-    list-style: none;
-    margin-left: 0;
-  }
-
-  ${LinkButton} {
-    border-color: white;
-    color: white;
-
-    &:hover {
-      background-color: white;
-      color: #242424;
-    }
-  }
+  ${darkArticle};
 `
 
 const Projects = styled.article`
   ${article};
+  padding-bottom: 0;
+`
+
+const ProjectsShowcase = styled.div`
+  ${article};
+  padding-right: 40px;
+  padding-left: 40px;
+  max-width: none;
+  overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(6, min-content);
+  grid-column-gap: 40px;
 `
 
 const IndexPage = () => {
+  const projectsRef = useRef()
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "my-photo.jpg" }) {
+      constroiWood: file(relativePath: { eq: "constroi-wood.png" }) {
         childImageSharp {
-          fixed(width: 512, height: 512) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      personalWebsite: file(relativePath: { eq: "personal-website.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      cv: allFile(filter: { extension: { eq: "pdf" } }) {
+        edges {
+          node {
+            publicURL
+            name
           }
         }
       }
     }
   `)
+
+  const scrollToProjects = e => {
+    e.preventDefault()
+    projectsRef.current.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
     <Layout>
@@ -119,56 +154,83 @@ const IndexPage = () => {
         <Skew />
         <Main>
           <MainTextWrapper>
-            <Img
-              fixed={data.placeholderImage.childImageSharp.fixed}
-              style={{
-                borderRadius: `50%`,
-                maxWidth: `250px`,
-                maxHeight: `250px`,
-              }}
-            />
             <Title>Hi, I'm João Inez</Title>
             <P>
               I'm a web developer who loves all things Javascript, especially
               the functional side.
             </P>
+            <IconA
+              href="https://www.linkedin.com/in/joao-inez"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin size={20} />
+            </IconA>
+            <IconA
+              href="https://github.com/JoaoInez"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github size={20} />
+            </IconA>
           </MainTextWrapper>
           <MainButtonWrapper>
-            <LinkButton to="/portfolio">
-              Portfolio <ArrowRight size={20} />
-            </LinkButton>
+            <ButtonA
+              target="_blank"
+              rel="noopener noreferrer"
+              href={data.cv.edges[0].node.publicURL}
+            >
+              Resume <Download size={20} />
+            </ButtonA>
+            <ButtonA href="#projects" onClick={scrollToProjects}>
+              Projects <ArrowDown size={20} />
+            </ButtonA>
           </MainButtonWrapper>
         </Main>
       </Section>
       <DualSection color="#242424">
-        <About>
-          <p>
-            Not a lot of things fascinate more than the world of software
-            development. Programming seems like a tool box with infinite
-            possiblities, where the only limiting factor is your imagination,
-            and maybe processing power.
-          </p>
-          <LinkButton to="/about">
-            More about me <ArrowRight size={20} />
-          </LinkButton>
-        </About>
         <Skills>
-          <h4>Favourite technologies:</h4>
+          <h4>My favourite technologies</h4>
           <ul>
             <li>Javascript</li>
             <li>React</li>
             <li>GraphQL</li>
             <li>Python</li>
           </ul>
-          <LinkButton to="/skills">
-            See my skills <ArrowRight size={20} />
-          </LinkButton>
         </Skills>
+        <About>
+          <h4>About me</h4>
+          <p>
+            Not a lot of things fascinate more than the world of software
+            development. Programming seems like a tool box with infinite
+            possiblities, where the only limiting factor is your imagination,
+            and maybe processing power.
+          </p>
+        </About>
       </DualSection>
-      <Section>
+      <Section id="projects" ref={projectsRef}>
         <Projects>
           <H>Projects</H>
         </Projects>
+        <ProjectsShowcase>
+          <ProjectCard
+            title="ConstroiWood"
+            description="Webiste for the construction company ConstroiWood"
+            tech="Nextjs, Netlify, NetlifyCMS"
+            url="https://constroiwood.netlify.com/"
+            github="https://github.com/JoaoInez/constroi-wood"
+          >
+            <Img fluid={data.constroiWood.childImageSharp.fluid} />
+          </ProjectCard>
+          <ProjectCard
+            title="Personal Website"
+            description="My personal website"
+            tech="Gatsby, Github Pages"
+            github="https://github.com/JoaoInez/personal-website"
+          >
+            <Img fluid={data.personalWebsite.childImageSharp.fluid} />
+          </ProjectCard>
+        </ProjectsShowcase>
       </Section>
     </Layout>
   )

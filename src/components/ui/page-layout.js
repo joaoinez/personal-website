@@ -13,7 +13,7 @@ const Section = styled.section`
 const article = css`
   width: 100%;
   max-width: 1000px;
-  padding: 80px 20px;
+  padding: 80px 40px;
 `
 
 export { Section, article }

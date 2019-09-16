@@ -45,4 +45,10 @@ const IconA = styled.a`
   }
 `
 
-export { anchor, LinkButton, LinkA, A, IconA }
+const ButtonA = styled.a`
+  ${button};
+  text-decoration: none;
+  color: #242424;
+`
+
+export { anchor, LinkButton, LinkA, A, IconA, ButtonA }
