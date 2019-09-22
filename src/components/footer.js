@@ -43,14 +43,14 @@ const Footer = () => (
       <IconA
         href="https://www.linkedin.com/in/joao-inez"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
       >
         <Linkedin size={20} />
       </IconA>
       <IconA
         href="https://github.com/JoaoInez"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
       >
         <Github size={20} />
       </IconA>

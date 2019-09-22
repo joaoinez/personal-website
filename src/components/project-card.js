@@ -14,12 +14,16 @@ const Card = styled.div`
   max-width: 344px;
   transition: all 0.15s ease-in-out;
 
+  &:hover {
+    box-shadow: 0 0 8px 2px rgba(36, 36, 36, 0.2);
+  }
+
   small {
     opacity: 0.8;
   }
 
-  &:hover {
-    box-shadow: 0 0 8px 2px rgba(36, 36, 36, 0.2);
+  h2 {
+    white-space: nowrap;
   }
 `
 
@@ -52,12 +56,12 @@ const ProjectCard = ({ title, children, description, tech, url, github }) => (
     </p>
     <IconsWrapper>
       {url && (
-        <IconA href={url} target="_blank" rel="noopener noreferrer">
+        <IconA href={url} target="_blank" rel="noopener noreferrer nofollow">
           <ExternalLink size={20} />
         </IconA>
       )}
       {github && (
-        <IconA href={github} target="_blank" rel="noopener noreferrer">
+        <IconA href={github} target="_blank" rel="noopener noreferrer nofollow">
           <Github size={20} />
         </IconA>
       )}

@@ -37,7 +37,7 @@ const Main = styled.article`
 `
 
 const MainTextWrapper = styled.div`
-  flex: 2;
+  flex: 1;
   min-width: 200px;
 
   ${IconA} {
@@ -55,13 +55,12 @@ const MainButtonWrapper = styled.div`
   flex: 1;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
 
   ${ButtonA} {
-    &:first-of-type {
-      margin-right: 20px;
-    }
+    margin: 10px 0;
   }
 `
 
@@ -131,6 +130,13 @@ const IndexPage = () => {
           }
         }
       }
+      apollify: file(relativePath: { eq: "apollify.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       cv: allFile(filter: { extension: { eq: "pdf" } }) {
         edges {
           node {
@@ -169,7 +175,7 @@ const IndexPage = () => {
             <IconA
               href="https://github.com/JoaoInez"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               <Github size={20} />
             </IconA>
@@ -177,7 +183,7 @@ const IndexPage = () => {
           <MainButtonWrapper>
             <ButtonA
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               href={data.cv.edges[0].node.publicURL}
             >
               Resume <Download size={20} />
@@ -229,6 +235,15 @@ const IndexPage = () => {
             github="https://github.com/JoaoInez/personal-website"
           >
             <Img fluid={data.personalWebsite.childImageSharp.fluid} />
+          </ProjectCard>
+          <ProjectCard
+            title="Apollify"
+            description="Creates spotify playlists based on the user's selected artists"
+            tech="Nuxt, Heroku"
+            url="https://apollify.herokuapp.com/"
+            github="https://github.com/JoaoInez/apollify"
+          >
+            <Img fluid={data.apollify.childImageSharp.fluid} />
           </ProjectCard>
         </ProjectsShowcase>
       </Section>
