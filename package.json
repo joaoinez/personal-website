@@ -3,6 +3,7 @@
   "description": "My personal website.",
   "version": "0.1.0",
   "author": "Joao Inez",
+  "homepage": "https://joaoinez.github.io/personal-website",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.15.14",
@@ -40,9 +41,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/JoaoInez/personal-website"
   }
 }
