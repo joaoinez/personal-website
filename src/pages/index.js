@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import styled, { css } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { ArrowDown } from "styled-icons/feather/ArrowDown"
@@ -12,6 +12,15 @@ import SEO from "../components/seo"
 import { Section, article, ButtonA, H, IconA } from "../components/ui"
 import ProjectCard from "../components/project-card"
 
+const skewSlide = keyframes`
+  from {
+    transform: translateX(-65vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+`
+
 const Skew = styled.div`
   position: absolute;
   width: 100%;
@@ -20,6 +29,9 @@ const Skew = styled.div`
   z-index: -1;
   top: 0;
   clip-path: polygon(0 0, 35% 0, 65% 100%, 0 100%);
+  animation-name: ${skewSlide};
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 `
 
 const Title = styled.h1`
@@ -36,11 +48,50 @@ const Main = styled.article`
   align-items: center;
 `
 
+const mainTextSlide = keyframes`
+from {
+  transform: translateX(-500px);
+}
+to {
+  transform: translateX(0);
+  opacity: 1;
+}
+`
+
+const buttonReveal = keyframes`
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`
+
+const buttonAnim = css`
+  opacity: 0;
+  animation-name: ${buttonReveal};
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+`
+
 const MainTextWrapper = styled.div`
   flex: 1;
   min-width: 200px;
+  opacity: 0;
+  animation-name: ${mainTextSlide};
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-delay: 0.25s;
+  animation-fill-mode: forwards;
 
   ${IconA} {
+    svg {
+      ${buttonAnim};
+    }
+
     &:first-of-type {
       margin-right: 20px;
     }
@@ -61,6 +112,15 @@ const MainButtonWrapper = styled.div`
 
   ${ButtonA} {
     margin: 10px 0;
+    ${buttonAnim};
+
+    &:first-of-type {
+      animation-delay: 1.3s;
+    }
+
+    &:last-of-type {
+      animation-delay: 1.55s;
+    }
   }
 `
 
@@ -108,7 +168,7 @@ const ProjectsShowcase = styled.div`
   max-width: none;
   overflow-x: auto;
   display: grid;
-  grid-template-columns: repeat(6, min-content);
+  grid-template-columns: repeat(3, min-content);
   grid-column-gap: 40px;
 `
 

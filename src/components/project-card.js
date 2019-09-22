@@ -48,7 +48,13 @@ const ProjectCard = ({ title, children, description, tech, url, github }) => (
   <Card>
     <InfoWrapper>
       <h2>{title}</h2>
-      {children}
+      <a
+        href={url || github || "#"}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+      >
+        {children}
+      </a>
       <Description>{description}</Description>
     </InfoWrapper>
     <p>
@@ -68,5 +74,14 @@ const ProjectCard = ({ title, children, description, tech, url, github }) => (
     </IconsWrapper>
   </Card>
 )
+
+ProjectCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  description: PropTypes.string.isRequired,
+  tech: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  github: PropTypes.string.isRequired,
+}
 
 export default ProjectCard
