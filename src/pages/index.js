@@ -240,7 +240,7 @@ const IndexPage = () => {
             title="Apollify"
             description="Creates spotify playlists based on the user's selected artists"
             tech="Nuxt, Heroku"
-            url="https://apollify.herokuapp.com/"
+            url="https://apollify.com/"
             github="https://github.com/JoaoInez/apollify"
           >
             <Img fluid={data.apollify.childImageSharp.fluid} />
