@@ -38,7 +38,7 @@ const Divider = styled.p`
 const Footer = () => (
   <FooterS>
     <FooterContainer>
-      <p>© 2019 Joao Inez</p>
+      <p>© 2019 João Inez</p>
       <Divider>|</Divider>
       <IconA
         href="https://www.linkedin.com/in/joao-inez"
