@@ -52,6 +52,18 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: `https://joaoinez.me/image.png`,
+        },
+        {
+          property: `og:image:alt`,
+          content: `João Inez`,
+        },
+        {
+          property: `og:url`,
+          content: `https://joaoinez.me`,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -66,6 +78,18 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image`,
+          content: `https://joaoinez.me/image.png`,
+        },
+        {
+          name: `twitter:image:alt`,
+          content: `João Inez`,
+        },
+        {
+          name: `twitter:url`,
+          content: `https://joaoinez.me`,
         },
       ].concat(meta)}
     />

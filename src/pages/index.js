@@ -162,14 +162,18 @@ const Projects = styled.article`
 `
 
 const ProjectsShowcase = styled.div`
-  ${article};
-  padding-right: 40px;
-  padding-left: 40px;
-  max-width: none;
-  overflow-x: auto;
+  flex: 1;
+  width: 100%;
+  margin: 80px 0;
   display: grid;
-  grid-template-columns: repeat(3, min-content);
-  grid-column-gap: 40px;
+  grid-gap: 40px;
+  grid-template-columns: repeat(5, min-content);
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+`
+
+const EmptyCard = styled.div`
+  width: 10px;
 `
 
 const IndexPage = () => {
@@ -279,10 +283,11 @@ const IndexPage = () => {
           <H>Projects</H>
         </Projects>
         <ProjectsShowcase>
+          <EmptyCard />
           <ProjectCard
             title="ConstroiWood"
             description="Webiste for the construction company ConstroiWood"
-            tech="Nextjs, Netlify, NetlifyCMS"
+            tech="Next, Netlify, NetlifyCMS"
             url="https://constroiwood.netlify.com/"
             github="https://github.com/JoaoInez/constroi-wood"
           >
@@ -305,6 +310,7 @@ const IndexPage = () => {
           >
             <Img fluid={data.apollify.childImageSharp.fluid} />
           </ProjectCard>
+          <EmptyCard />
         </ProjectsShowcase>
       </Section>
     </Layout>

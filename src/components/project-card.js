@@ -13,6 +13,7 @@ const Card = styled.div`
   width: 75vw;
   max-width: 344px;
   transition: all 0.15s ease-in-out;
+  scroll-snap-align: center;
 
   &:hover {
     box-shadow: 0 0 8px 2px rgba(36, 36, 36, 0.2);
