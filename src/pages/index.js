@@ -6,6 +6,7 @@ import { ArrowDown } from "styled-icons/feather/ArrowDown"
 import { Download } from "styled-icons/feather/Download"
 import { Linkedin } from "styled-icons/feather/Linkedin"
 import { Github } from "styled-icons/feather/Github"
+import { Mail } from "styled-icons/feather/Mail"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -42,6 +43,7 @@ const Title = styled.h1`
 
 const Main = styled.article`
   ${article};
+  padding: 0 40px;
   flex: 1;
   display: flex;
   flex-wrap: wrap;
@@ -92,8 +94,10 @@ const MainTextWrapper = styled.div`
       ${buttonAnim};
     }
 
-    &:first-of-type {
-      margin-right: 20px;
+    margin-right: 20px;
+
+    &:last-of-type {
+      margin-right: 0;
     }
   }
 `
@@ -164,16 +168,17 @@ const Projects = styled.article`
 const ProjectsShowcase = styled.div`
   flex: 1;
   width: 100%;
-  margin: 80px 0;
+  margin: 0 0 40px 0;
+  padding: 40px 0;
   display: grid;
-  grid-gap: 40px;
+  grid-gap: 35px;
   grid-template-columns: repeat(5, min-content);
   overflow-x: scroll;
   scroll-snap-type: x proximity;
 `
 
 const EmptyCard = styled.div`
-  width: 10px;
+  width: 1px;
 `
 
 const IndexPage = () => {
@@ -214,7 +219,7 @@ const IndexPage = () => {
 
   const scrollToProjects = e => {
     e.preventDefault()
-    projectsRef.current.scrollIntoView({ behavior: "smooth" })
+    projectsRef.current.scrollIntoView({ behavior: "smooth", block: "end" })
   }
 
   return (
@@ -243,6 +248,9 @@ const IndexPage = () => {
             >
               <Github size={20} />
             </IconA>
+            <IconA href="mailto:joaoinez.info@gmail.com">
+              <Mail size={20} />
+            </IconA>
           </MainTextWrapper>
           <MainButtonWrapper>
             <ButtonA
@@ -266,6 +274,7 @@ const IndexPage = () => {
             <li>React</li>
             <li>GraphQL</li>
             <li>Python</li>
+            <li>Vue</li>
           </ul>
         </Skills>
         <About>
@@ -278,11 +287,11 @@ const IndexPage = () => {
           </p>
         </About>
       </DualSection>
-      <Section id="projects" ref={projectsRef}>
+      <Section>
         <Projects>
           <H>Projects</H>
         </Projects>
-        <ProjectsShowcase>
+        <ProjectsShowcase ref={projectsRef} id="projects">
           <EmptyCard />
           <ProjectCard
             title="ConstroiWood"
