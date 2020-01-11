@@ -58,7 +58,7 @@ const InfoWrapper = styled.div`
 const Footer = () => (
   <FooterS>
     <FooterContainer>
-      <p>© 2019 João Inez</p>
+      <p>© 2020 João Inez</p>
       <Divider>|</Divider>
       <InfoWrapper>
         <IconA
