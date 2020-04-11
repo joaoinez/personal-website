@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Github } from "styled-icons/feather/Github"
 import { ExternalLink } from "styled-icons/feather/ExternalLink"
+import { GooglePlay } from "styled-icons/fa-brands/GooglePlay"
 
 import { IconA } from "../components/ui"
 
@@ -39,13 +40,23 @@ const Description = styled.p`
 
 const IconsWrapper = styled.div`
   ${IconA} {
-    &:first-of-type {
-      margin-right: 20px;
+    margin-right: 20px;
+
+    &:last-of-type {
+      margin-right: unset;
     }
   }
 `
 
-const ProjectCard = ({ title, children, description, tech, url, github }) => (
+const ProjectCard = ({
+  title,
+  children,
+  description,
+  tech,
+  url,
+  github,
+  googlePlay,
+}) => (
   <Card>
     <InfoWrapper>
       <h2>{title}</h2>
@@ -72,6 +83,15 @@ const ProjectCard = ({ title, children, description, tech, url, github }) => (
           <Github size={20} />
         </IconA>
       )}
+      {googlePlay && (
+        <IconA
+          href={googlePlay}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <GooglePlay size={16} />
+        </IconA>
+      )}
     </IconsWrapper>
   </Card>
 )
@@ -83,6 +103,7 @@ ProjectCard.propTypes = {
   tech: PropTypes.string.isRequired,
   url: PropTypes.string,
   github: PropTypes.string.isRequired,
+  googlePlay: PropTypes.string,
 }
 
 export default ProjectCard

@@ -316,6 +316,7 @@ const IndexPage = () => {
             tech="Nuxt, Heroku"
             url="https://www.apollify.com/"
             github="https://github.com/JoaoInez/apollify"
+            googlePlay="https://play.google.com/store/apps/details?id=com.apollify.twa"
           >
             <Img fluid={data.apollify.childImageSharp.fluid} />
           </ProjectCard>
