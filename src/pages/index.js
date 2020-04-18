@@ -313,7 +313,7 @@ const IndexPage = () => {
           <ProjectCard
             title="Apollify"
             description="Creates spotify playlists based on the user's selected artists"
-            tech="Nuxt, Heroku"
+            tech="Nuxt, Now.sh"
             url="https://www.apollify.com/"
             github="https://github.com/JoaoInez/apollify"
             googlePlay="https://play.google.com/store/apps/details?id=com.apollify.twa"
