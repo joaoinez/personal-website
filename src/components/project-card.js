@@ -30,7 +30,7 @@ const Card = styled.div`
 `
 
 const InfoWrapper = styled.div`
-  height: 300px;
+  height: 340px;
   margin-bottom: 10px;
 `
 

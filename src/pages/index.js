@@ -184,28 +184,15 @@ const EmptyCard = styled.div`
 const IndexPage = () => {
   const projectsRef = useRef()
   const data = useStaticQuery(graphql`
+    fragment projectImage on File {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
     query {
-      constroiWood: file(relativePath: { eq: "constroi-wood.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      personalWebsite: file(relativePath: { eq: "personal-website.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      apollify: file(relativePath: { eq: "apollify.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       cv: allFile(filter: { extension: { eq: "pdf" } }) {
         edges {
           node {
@@ -213,6 +200,18 @@ const IndexPage = () => {
             name
           }
         }
+      }
+      constroiWood: file(relativePath: { eq: "constroi-wood.png" }) {
+        ...projectImage
+      }
+      personalWebsite: file(relativePath: { eq: "personal-website.png" }) {
+        ...projectImage
+      }
+      apollify: file(relativePath: { eq: "apollify.png" }) {
+        ...projectImage
+      }
+      harpocrates: file(relativePath: { eq: "harpocrates-cli.png" }) {
+        ...projectImage
       }
     }
   `)
@@ -295,7 +294,7 @@ const IndexPage = () => {
           <EmptyCard />
           <ProjectCard
             title="ConstroiWood"
-            description="Webiste for the construction company ConstroiWood"
+            description="Website for the construction company ConstroiWood"
             tech="Next, Netlify, NetlifyCMS"
             url="https://constroiwood.netlify.com/"
             github="https://github.com/JoaoInez/constroi-wood"
@@ -319,6 +318,15 @@ const IndexPage = () => {
             googlePlay="https://play.google.com/store/apps/details?id=com.apollify.twa"
           >
             <Img fluid={data.apollify.childImageSharp.fluid} />
+          </ProjectCard>
+          <ProjectCard
+            title="harpocrates-cli"
+            description="Command-line interface to manage secrets and passwords"
+            tech="Node.js, Commander"
+            url="https://www.npmjs.com/package/harpocrates-cli"
+            github="https://github.com/JoaoInez/harpocrates-cli"
+          >
+            <Img fluid={data.harpocrates.childImageSharp.fluid} />
           </ProjectCard>
           <EmptyCard />
         </ProjectsShowcase>
