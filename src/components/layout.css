@@ -43,6 +43,8 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  text-decoration: none;
+  color: #242424;
 }
 a:active,
 a:hover {
@@ -616,7 +618,17 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+:root {
+  --card-width: 344px;
+  --card-gap: 48px;
+  --card-gap-half: 24px;
+}
 @media only screen and (max-width: 480px) {
+  :root {
+    --card-width: 300px;
+    --card-gap: 24px;
+    --card-gap-half: 12px;
+  }
   html {
     font-size: 100%;
   }

@@ -5,19 +5,24 @@ import { button } from "./button"
 const anchor = css`
   text-decoration: none;
   color: #242424;
+  position: relative;
+  overflow: hidden;
 
   &::after {
     content: "";
-    display: block;
-    width: ${({ path = "", datapath = null }) =>
-      datapath === path ? "100%" : "0"};
-    height: 2px;
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    max-width: 0;
     margin: 0 auto;
-    background: black;
-    transition: width 0.15s ease-in-out;
+    background: #888;
+    transition: all 0.15s ease-in-out;
+    z-index: -1;
   }
   &:hover::after {
-    width: 100%;
+    max-width: 100%;
   }
 `
 

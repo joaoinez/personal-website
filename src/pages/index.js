@@ -1,7 +1,6 @@
 import React, { useRef } from "react"
 import styled, { css, keyframes } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
 import { ArrowDown } from "styled-icons/feather/ArrowDown"
 import { Download } from "styled-icons/feather/Download"
 import { Linkedin } from "styled-icons/feather/Linkedin"
@@ -10,8 +9,8 @@ import { Mail } from "styled-icons/feather/Mail"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ProjectSlider from "../components/project-slider"
 import { Section, article, ButtonA, H, IconA } from "../components/ui"
-import ProjectCard from "../components/project-card"
 
 const skewSlide = keyframes`
   from {
@@ -165,33 +164,9 @@ const Projects = styled.article`
   padding-bottom: 0;
 `
 
-const ProjectsShowcase = styled.div`
-  flex: 1;
-  width: 100%;
-  margin: 0 0 40px 0;
-  padding: 40px 0;
-  display: grid;
-  grid-gap: 35px;
-  grid-template-columns: repeat(5, min-content);
-  overflow-x: scroll;
-  scroll-snap-type: x proximity;
-`
-
-const EmptyCard = styled.div`
-  width: 1px;
-`
-
 const IndexPage = () => {
-  const projectsRef = useRef()
+  const projectsRef = useRef(null)
   const data = useStaticQuery(graphql`
-    fragment projectImage on File {
-      childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-
     query {
       cv: allFile(filter: { extension: { eq: "pdf" } }) {
         edges {
@@ -200,18 +175,6 @@ const IndexPage = () => {
             name
           }
         }
-      }
-      constroiWood: file(relativePath: { eq: "constroi-wood.png" }) {
-        ...projectImage
-      }
-      personalWebsite: file(relativePath: { eq: "personal-website.png" }) {
-        ...projectImage
-      }
-      apollify: file(relativePath: { eq: "apollify.png" }) {
-        ...projectImage
-      }
-      harpocrates: file(relativePath: { eq: "harpocrates-cli.png" }) {
-        ...projectImage
       }
     }
   `)
@@ -286,50 +249,11 @@ const IndexPage = () => {
           </p>
         </About>
       </DualSection>
-      <Section>
+      <Section ref={projectsRef} id="projects">
         <Projects>
           <H>Projects</H>
         </Projects>
-        <ProjectsShowcase ref={projectsRef} id="projects">
-          <EmptyCard />
-          <ProjectCard
-            title="ConstroiWood"
-            description="Website for the construction company ConstroiWood"
-            tech="Next, Netlify, NetlifyCMS"
-            url="https://constroiwood.netlify.com/"
-            github="https://github.com/JoaoInez/constroi-wood"
-          >
-            <Img fluid={data.constroiWood.childImageSharp.fluid} />
-          </ProjectCard>
-          <ProjectCard
-            title="Personal Website"
-            description="My personal website"
-            tech="Gatsby, Github Pages"
-            github="https://github.com/JoaoInez/personal-website"
-          >
-            <Img fluid={data.personalWebsite.childImageSharp.fluid} />
-          </ProjectCard>
-          <ProjectCard
-            title="Apollify"
-            description="Creates spotify playlists based on the user's selected artists"
-            tech="Nuxt, Now.sh"
-            url="https://www.apollify.com/"
-            github="https://github.com/JoaoInez/apollify"
-            googlePlay="https://play.google.com/store/apps/details?id=com.apollify.twa"
-          >
-            <Img fluid={data.apollify.childImageSharp.fluid} />
-          </ProjectCard>
-          <ProjectCard
-            title="harpocrates-cli"
-            description="Command-line interface to manage secrets and passwords"
-            tech="Node.js, Commander"
-            url="https://www.npmjs.com/package/harpocrates-cli"
-            github="https://github.com/JoaoInez/harpocrates-cli"
-          >
-            <Img fluid={data.harpocrates.childImageSharp.fluid} />
-          </ProjectCard>
-          <EmptyCard />
-        </ProjectsShowcase>
+        <ProjectSlider />
       </Section>
     </Layout>
   )
