@@ -129,16 +129,6 @@ const ProjectCard = ({
             <ExternalLink size={20} />
           </IconA>
         )}
-        {github && (
-          <IconA
-            href={github}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-          >
-            <Github size={20} />
-          </IconA>
-        )}
-
         {googlePlay && (
           <IconA
             href={googlePlay}
@@ -146,6 +136,15 @@ const ProjectCard = ({
             rel="noopener noreferrer nofollow"
           >
             <GooglePlay size={16} />
+          </IconA>
+        )}
+        {github && (
+          <IconA
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <Github size={20} />
           </IconA>
         )}
       </IconWrapper>

@@ -43,10 +43,22 @@ const FooterContainer = styled.div`
       opacity: 0.75;
     }
   }
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column-reverse;
+  }
 `
 
 const Divider = styled.p`
   padding: 0 20px;
+
+  @media only screen and (max-width: 600px) {
+    color: transparent;
+    width: 50%;
+    border-top: 1px solid white;
+    height: 1px;
+    padding: 0 0 10px;
+  }
 `
 
 const InfoWrapper = styled.div`
