@@ -242,7 +242,7 @@ const IndexPage = () => {
         <About>
           <h4>About me</h4>
           <p>
-            Not a lot of things fascinate more than the world of software
+            Not a lot of things fascinate me more than the world of software
             development. Programming seems like a tool box with infinite
             possiblities, where the only limiting factor is your imagination,
             and maybe processing power.

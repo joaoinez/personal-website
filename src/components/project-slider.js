@@ -215,7 +215,7 @@ const ProjectSlider = () => {
     }
   `)
 
-  const scroll = () => (backward = false) => {
+  const scroll = (backward = false) => () => {
     sliderRef.current.scrollBy({
       top: 0,
       left: (sliderRef.current.offsetWidth / 4) * (backward ? -1 : 1),
@@ -304,15 +304,7 @@ const ProjectSlider = () => {
       </ProjectsShowcase>
       <RightArea>
         <div>
-          <Button
-            onClick={() =>
-              sliderRef.current.scrollBy({
-                top: 0,
-                left: sliderRef.current.offsetWidth / 4,
-                behavior: "smooth",
-              })
-            }
-          >
+          <Button onClick={scroll()}>
             <ChevronRight size={26} />
           </Button>
         </div>
