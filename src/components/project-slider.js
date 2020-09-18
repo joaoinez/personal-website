@@ -212,6 +212,9 @@ const ProjectSlider = () => {
       harpocrates: file(relativePath: { eq: "harpocrates-cli.png" }) {
         ...projectImage
       }
+      demonimo: file(relativePath: { eq: "demonimo.png" }) {
+        ...projectImage
+      }
     }
   `)
 
@@ -288,6 +291,15 @@ const ProjectSlider = () => {
           github="https://github.com/JoaoInez/harpocrates-cli"
         >
           <Img fluid={data.harpocrates.childImageSharp.fluid} className="img" />
+        </ProjectCard>
+        <ProjectCard
+          title="Demónimo"
+          description="Website for the arts and literature magazine Demónimo"
+          tech="Gatsby, Netlify, Ghost"
+          url="https://demonimo.pt"
+          github="https://github.com/JoaoInez/demonimo"
+        >
+          <Img fluid={data.demonimo.childImageSharp.fluid} className="img" />
         </ProjectCard>
         <AllRepositories>
           <a
