@@ -98,7 +98,7 @@ const ProjectCard = ({
 }) => (
   <Card>
     <a
-      href={url || github || "#"}
+      href={url || googlePlay || github || "#"}
       target="_blank"
       rel="noopener noreferrer nofollow"
       className="image-wrapper"

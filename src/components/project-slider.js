@@ -215,6 +215,9 @@ const ProjectSlider = () => {
       demonimo: file(relativePath: { eq: "demonimo.png" }) {
         ...projectImage
       }
+      haikusPraVida: file(relativePath: { eq: "haikus-pra-vida.png" }) {
+        ...projectImage
+      }
     }
   `)
 
@@ -254,7 +257,7 @@ const ProjectSlider = () => {
           title="ConstroiWood"
           description="Website for the construction company ConstroiWood"
           tech="Next, Netlify, NetlifyCMS"
-          url="https://constroiwood.netlify.com/"
+          // url="https://constroiwood.netlify.com/"
           github="https://github.com/JoaoInez/constroi-wood"
         >
           <Img
@@ -294,12 +297,21 @@ const ProjectSlider = () => {
         </ProjectCard>
         <ProjectCard
           title="Demónimo"
-          description="Website for the arts and literature magazine Demónimo"
+          description="Website for the arts, culture and literature project Demónimo"
           tech="Gatsby, Netlify, Ghost"
           url="https://demonimo.pt"
           github="https://github.com/JoaoInez/demonimo"
         >
           <Img fluid={data.demonimo.childImageSharp.fluid} className="img" />
+        </ProjectCard>
+        <ProjectCard
+          title="Haikus P'ra Vida"
+          description="App that generates randomly generated haikus"
+          tech="React native, Expo, GraphQL"
+          googlePlay="https://play.google.com/store/apps/details?id=com.demonimo.haikuspravida"
+          github="https://github.com/JoaoInez/haikus-pra-vida-app"
+        >
+          <Img fluid={data.haikusPraVida.childImageSharp.fluid} className="img" />
         </ProjectCard>
         <AllRepositories>
           <a
