@@ -23,6 +23,6 @@ cd ~
 paru -S --noconfirm chezmoi
 
 # Init dotfiles
-echo "Initializing chezmoi"
+echo "Initializing chezmoi..."
 
 chezmoi init --apply joaoinez
