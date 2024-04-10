@@ -1,51 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-}
-
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-#root,
-#__next {
-  isolation: isolate;
-}
-
 html {
   font-family: "Lato", sans-serif;
   background-color: #fff0f3;
@@ -53,7 +7,7 @@ html {
 }
 
 body {
-  background-image: url("sakura.gif");
+  background-image: url("../assets/sakura.gif");
   background-size: 300px;
 }
 
@@ -61,7 +15,7 @@ main {
   padding: 0.25rem 0.75rem;
   height: 100vh;
   display: flex;
-  background-image: url("sakura.gif");
+  background-image: url("../assets/sakura.gif");
   background-size: 300px;
   background-position-x: 150px;
   background-position-y: 150px;
@@ -119,6 +73,14 @@ a {
 
 .linkedin:hover img {
   display: unset;
+}
+
+address.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* gap: 2rem 4rem; */
 }
 
 section {

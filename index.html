@@ -4,15 +4,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preload" as="image" href="assets/demonimo.png" />
+    <link rel="preload" as="image" href="assets/analoguecode.png" />
     <!-- Not a touch of JS -->
-    <title>Joao Inez</title>
+    <title>João Inez</title>
   </head>
   <body>
     <main>
       <header>
-        <h2>Joao Inez</h2>
+        <h2>João Inez</h2>
         <h2>Software Developer <span class="dot">•</span> Artist</h2>
         <h2>
           Loulé <span class="dot">•</span>
@@ -23,7 +26,7 @@
           Modern web development is slow, bloated and complex; I love it ❤️.
           This website was 100% made with artisanal code.
         </h2>
-        <address>
+        <address class="nav">
           <a
             href="mailto:joaoinez.info@gmail.com"
             target="_blank"
@@ -31,24 +34,24 @@
           >
             <h2>joaoinez.info@gmail.com</h2>
           </a>
-          <h2 class="dot">•</h2>
+          <h2 class="dot">&nbsp;•&nbsp;</h2>
           <a
             href="https://www.linkedin.com/in/joao-inez/"
             target="_blank"
             rel="noopener noreferrer"
             class="linkedin"
           >
-            <img src="burning.gif" alt="skeleton burning in fire" />
+            <img src="assets/burning.gif" alt="skeleton burning in fire" />
             <h2 style="text-decoration: line-through">LinkedIn</h2>
           </a>
-          <h2 class="dot">•</h2>
+          <h2 class="dot">&nbsp;•&nbsp;</h2>
           <a
             href="https://github.com/JoaoInez"
             target="_blank"
             rel="noopener noreferrer"
             ><h2>github</h2></a
           >
-          <h2 class="dot">→</h2>
+          <h2>&nbsp;>>=&nbsp;</h2>
           <a
             href="https://github.com/JoaoInez/dotfiles"
             target="_blank"
@@ -65,7 +68,11 @@
             rel="noopener noreferrer"
             class="demonimo"
           >
-            <img src="demonimo.png" alt="Demonimo's frontpage" />
+            <img
+              src="assets/demonimo.png"
+              alt="Demonimo's frontpage"
+              sizes="33vw"
+            />
             <h2>Demonimo</h2>
           </a>
           <a
@@ -75,15 +82,16 @@
             class="analoguecode"
           >
             <img
-              src="analoguecode.png"
+              src="assets/analoguecode.png"
               alt="The Analogue Code Company's frontpage"
+              sizes="33vw"
             />
             <h2>The Analogue Code Company</h2>
           </a>
         </address>
         <small>© She free on my market 'till I capitalism™</small>
         <div class="ball"></div>
-        <img src="eye.gif" alt="3D eyball" class="eye" />
+        <img src="assets/eye.gif" alt="3D eyball" class="eye" />
       </section>
     </main>
   </body>

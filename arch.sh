@@ -1,28 +1,41 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Drawing .slivers"
+echo "Drawing .slivers/arch"
 
 # Disable IPv6
-nmcli connection modify "Wired connection 1" ipv6.method "disabled"
-nmcli connection up "Wired connection 1"
+if nmcli -f ipv6.method connection show "Wired connection 1" | grep "enabled" &> /dev/null; then
+  nmcli connection modify "Wired connection 1" ipv6.method "disabled"
+  nmcli connection up "Wired connection 1"
+fi
 
 # Update system
 sudo pacman -Syu --noconfirm
 
 # Install git, cargo and paru
-sudo pacman -S --needed --noconfirm base-devel
-sudo pacman -S --noconfirm git
-sudo pacman -Sdd --noconfirm cargo
-git clone https://aur.archlinux.org/paru.git
-cd paru
-echo "yes" | makepkg -si
-cd ~
+if ! pacman -Qi base-devel &>/dev/null ; then
+  sudo pacman -S --needed --noconfirm base-devel
+fi
+
+if ! pacman -Qi git &>/dev/null ; then
+  sudo pacman -S --noconfirm git
+fi
+
+if ! pacman -Qi cargo &>/dev/null ; then
+  sudo pacman -Sdd --noconfirm cargo
+fi
+
+if ! pacman -Qi paru &>/dev/null ; then
+  git clone https://aur.archlinux.org/paru.git
+  cd paru
+  makepkg -si --noconfirm
+fi
 
 # Install chezmoi
-paru -S --noconfirm chezmoi
+if ! pacman -Qi paru &>/dev/null ; then
+  paru -S --noconfirm chezmoi
+fi
 
-# Init dotfiles
-echo "Initializing chezmoi..."
-
-chezmoi init --apply joaoinez
+# Reminder
+echo "Setup completed. You may now run"
+echo "$ chezmoi init --apply joaoinez"
