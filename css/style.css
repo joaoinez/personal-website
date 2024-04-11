@@ -20,6 +20,7 @@ main {
   background-position-x: 150px;
   background-position-y: 150px;
   flex-direction: column;
+  overflow: hidden;
 }
 
 header {
@@ -79,8 +80,7 @@ address.nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  /* gap: 2rem 4rem; */
+  justify-content: flex-start;
 }
 
 section {
@@ -147,8 +147,8 @@ small {
   position: absolute;
   bottom: 0.25rem;
   right: 0;
-  width: 70px;
-  height: 70px;
+  width: 7vh;
+  height: 7vh;
   background-color: black;
   border-radius: 50%;
   transform-origin: center;
@@ -158,7 +158,7 @@ small {
 
 .ball:hover {
   background-color: white;
-  transform: scale(30);
+  transform: scale(25);
   mix-blend-mode: difference;
 }
 
@@ -168,7 +168,10 @@ small {
   position: absolute;
   bottom: 0.25rem;
   right: 0;
-  transform: translateX(-15px) translateY(-15px);
+  transform: translate(
+    calc((7vh - 40px) / 2 * -1),
+    calc((7vh - 40px) / 2 * -1)
+  );
   z-index: 3;
   pointer-events: none;
 }
