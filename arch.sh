@@ -40,7 +40,7 @@ if ! pacman -Qi paru &>/dev/null ; then
   makepkg -si --noconfirm
 fi
 
-if ! pacman -Qi paru &>/dev/null ; then
+if ! pacman -Qi chezmoi &>/dev/null ; then
   echo "Installing chezmoi"
 
   paru -S --noconfirm chezmoi
