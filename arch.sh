@@ -46,8 +46,6 @@ if ! pacman -Qi chezmoi &>/dev/null ; then
   paru -S --noconfirm chezmoi
 fi
 
-# echo "Setup completed. You may now run"
-# echo "$ chezmoi init --apply joaoinez"
-
 echo "Initializing chezmoi"
+
 chezmoi init --apply joaoinez 
