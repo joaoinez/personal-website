@@ -1,3 +1,4 @@
-winget install chocolatey
+winget install --id=twpayne.chezmoi
+winget install --id=Git.Git
 
-choco install -y steam
+chezmoi init --apply joaoinez
