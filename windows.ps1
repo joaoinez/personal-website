@@ -4,6 +4,7 @@ winget install --id Microsoft.Powershell
 winget install --id gerardog.gsudo
 winget install --id Git.Git
 winget install --id twpayne.chezmoi
+# winget install --id Chocolatey.Chocolatey
 
 Write-Output "Setup completed."
 
