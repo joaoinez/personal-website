@@ -3,9 +3,7 @@ set -euo pipefail
 
 echo "Drawing .slivers/macos"
 
-echo "Installing homebrew"
-
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo "Initializing homebrew"
 
 (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
