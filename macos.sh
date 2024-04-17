@@ -9,4 +9,4 @@ brew install chezmoi
 
 # echo "Initializing chezmoi"
 
-# chezmoi init --apply joaoinez
+chezmoi init --apply joaoinez
