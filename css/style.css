@@ -44,7 +44,7 @@ h2.dot {
 }
 
 .leiria {
-  opacity: 0.33;
+  opacity: 1;
   transition: opacity 5s ease-in-out;
 }
 
@@ -175,3 +175,18 @@ small {
   z-index: 3;
   pointer-events: none;
 }
+
+@media screen and (prefers-color-scheme: dark) {
+  html {
+    background-color: #0d1117;
+    color: #fff0f3;
+  }
+   a {
+    color: #fff0f3;
+  }
+
+  .ball {
+    background-color: white;
+  }
+}
+
