@@ -1,0 +1,29 @@
+#!/bin/bash
+set -euo pipefail
+
+# ---
+
+echo "Installing dependencies..."
+
+sudo pacman -S --noconfirm base-devel git openssh tar rustup
+
+# ---
+
+echo "Cloning and building Paru..."
+
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si --noconfirm
+
+# ---
+
+echo "Installing Chezmoi..."
+
+paru -S --noconfirm chezmoi
+
+# ---
+
+echo "Cleaning up..."
+
+cd ..
+rm -rf ~/paru
