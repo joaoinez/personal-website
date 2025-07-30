@@ -9,6 +9,12 @@ sudo pacman -S --noconfirm base-devel git openssh tar rustup
 
 # ---
 
+echo "Setting up Rust..."
+
+rustup default stable
+
+# ---
+
 echo "Cloning and building Paru..."
 
 git clone https://aur.archlinux.org/paru.git
