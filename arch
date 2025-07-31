@@ -12,16 +12,18 @@ sudo pacman -S --noconfirm base-devel git openssh tar rustup
 echo "Setting up Rust..."
 
 rustup default stable
-rustup-init
 rustup toolchain install nightly
 
 # ---
 
-echo "Cloning and building Paru..."
+if [ ! -d ~/paru ]; then
+  echo "Cloning and building Paru..."
 
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si --noconfirm
+  git clone https://aur.archlinux.org/paru.git
+  cd paru
+  makepkg -si --noconfirm
+
+fi
 
 # ---
 
